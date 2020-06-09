@@ -33,6 +33,7 @@ cv2.namedWindow("image")
 cv2.setMouseCallback("image", shape_selection)
 
 
+
 # keep looping until the 'q' key is pressed
 while True:
     # display the image and wait for a keypress
