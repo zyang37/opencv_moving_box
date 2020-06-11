@@ -9,16 +9,12 @@ if __name__ == "__main__":
                    b"/Users/zhenningyang/Documents/yolov3_weights/yolov3_ssig_final.weights", 0)
     meta = load_meta(b"/Users/zhenningyang/Documents/opencv_moving_box/ssig.data")
 
-    # b"../data/car_plate1/slices/0.jpg"
     r = detect(net, meta, bytes(sys.argv[1], 'utf-8'))
-    print(r)
-
     count = len(r)
     img = draw("{}".format(sys.argv[1]), r)
-
-    #img = Image.fromarray(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
+    # Display Prediction
     cv2.imshow('prediction',img)
     k = cv2.waitKey(0)
     if k == 27:         # wait for ESC key to exit
