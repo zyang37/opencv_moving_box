@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # load model
     net = load_net(b"/Users/zhenningyang/Documents/darknet/cfg/yolov3_ssig.cfg",
                    b"/Users/zhenningyang/Documents/yolov3_weights/yolov3_ssig_final.weights", 0)
-    meta = load_meta(b"/Users/zhenningyang/Documents/opencv_moving_box/ssig.data")
+    meta = load_meta(b"/Users/zhenningyang/Documents/opencv_moving_box/cfg/ssig.data")
 
     r = detect(net, meta, bytes(sys.argv[1], 'utf-8'))
     count = len(r)
