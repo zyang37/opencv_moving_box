@@ -10,7 +10,24 @@ if __name__ == "__main__":
     meta = load_meta(b"/Users/zhenningyang/Documents/opencv_moving_box/cfg/ssig.data")
 
     r = detect(net, meta, bytes(sys.argv[1], 'utf-8'))
-    count = len(r)
+
+    # test
+    img = cv2.imread('{}'.format(sys.argv[1]))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    boxs = []
+    for i in range(len(r)):
+        temp = from_yolo_to_cor(img, r[i][2])
+        boxs.append(temp)
+    for i in range(len(boxs)):
+        print(boxs[i])
+        crop_img = img[boxs[i][3]:boxs[i][1], boxs[i][2]:boxs[i][0]].copy()
+        cv2.imwrite('plate_temp/plate{}.png'.format(i),crop_img)
+    print('\n')
+
+
+    #end
+
     img = draw("{}".format(sys.argv[1]), r)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
